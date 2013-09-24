@@ -1,0 +1,3 @@
+cmd
+
+python program.py
