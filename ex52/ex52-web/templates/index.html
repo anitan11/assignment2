@@ -1,4 +1,4 @@
-$def with (greeting)
+$def with (name)
 
 <html>
     <head>
@@ -7,12 +7,16 @@ $def with (greeting)
 <body>
 
 Hi. This program will help you to find out how much energy you horse need during one day.
-What is your name?
+<form method=POST>
+	What is your name?
+	<input type=text name=name> <br/>
+	<input type=submit>
+</form>
 
-$if greeting:
-    I just wanted to say <em style="color: green; font-size: 2em;">$greeting</em>.
+$if name:
+    $name
 $else:
-    <em>Hello</em>, world!
+    No name
 
 </body>
 </html>

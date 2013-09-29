@@ -5,22 +5,37 @@ from stable import *
 
 import web
 
-urls = ( '/', 'Index' )
+urls = (
+	'/', 'Index'
+)
 
 program = web.application(urls, globals())
 render = web.template.render('templates/')
 
 class Index(object):
 	
-	owner = Owner()
-	stable = Stable()
-	horse = Horse()
+	def GET(self):
+		return render.index()
 	
-	owner.setName()
+	def POST(self):
+		form = web.input(name="Nobody")
+        name = "%s" % (form.name)
+		return render.index(name = name)
 
-	horse.setAttributes()
+	def assignVariables(self):
+		owner = Owner()
+		stable = Stable()
+		horse = Horse()
+	
+		owner.setName()
 
-	stable.printHorsesInStable()
+		horse.setAttributes()
 
-	# horse.findEnergyNeed()
+		stable.printHorsesInStable()
+
+		# horse.findEnergyNeed()
+
+if __name__ == "__main__":
+	program.run()
+	
 
