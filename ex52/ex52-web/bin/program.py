@@ -1,5 +1,5 @@
-# from sys import *
-from program.owner import * #bad idea to import everything?
+# from sys import 
+from program import * #bad idea to import everything?
 import horse
 from stable import *
 
