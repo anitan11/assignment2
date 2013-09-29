@@ -5,14 +5,27 @@ $def with (name)
         <title>How much energy does my horse need per day?</title>
     </head>
 <body>
-
+<br/>
+<h1>How much energy does my horse need per day?</h1>
 Hi. This program will help you to find out how much energy you horse need during one day.
 <form method=POST>
 	What is your name?
 	<input type=text name=name> <br/>
+	What is your horses name?
+	<input type=text name=name> <br/>
+	What is your horses hight - in cm?
+	<input type=text name=name> <br/>
+	What is the type of your horse?
+	<input type=text name=name> <br/>
+	What is the gender of your horse?
+	stallion, gelding or mare
+	<input type=text name=name> <br/>
+	Do you have any more horses?
+	<input type="radio" name="morehorses" value="yes">Yes
+	<input type="radio" name="morehorses" value="no">No<br> <br/>
 	<input type=submit>
 </form>
-
+<hr/>
 $if name:
     $name
 $else:

@@ -1,6 +1,6 @@
 # from sys import *
-from owner import *
-from horse import *
+from program.owner import * #bad idea to import everything?
+import horse
 from stable import *
 
 import web
@@ -19,9 +19,9 @@ class Index(object):
 	
 	def POST(self):
 		form = web.input(name="Nobody")
-        name = "%s" % (form.name)
+		name = "%s" % (form.name)
 		return render.index(name = name)
-
+		
 	def assignVariables(self):
 		owner = Owner()
 		stable = Stable()

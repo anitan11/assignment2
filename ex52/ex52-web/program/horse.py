@@ -12,23 +12,16 @@ class Horse(object):
 	tfeh = "None"
 
 	def setAttributes(self):
-		print "What is your horses name?"
 		self.setName()
 		
-		print "What is your horses hight - in cm?"
 		self.setHight()
 		
-		print "What is the type of your horse?"
 		self.setType()
 		
-		print "What is the gender of your horse?"
-		print "stallion, gelding or mare"
 		self.setGender()
 		
 		self.putHorseInStable()
 		
-		print "Do you have any more horses?"
-		print "yes or no"
 		answer = raw_input(">")
 		if answer == "yes":
 			horse = Horse()
