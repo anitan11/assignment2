@@ -27,6 +27,13 @@ class Horse(object):
 		
 		self.putHorseInStable()
 		
+		print "Do you have any more horses?"
+		print "yes or no"
+		answer = raw_input(">")
+		if answer == "yes":
+			horse = Horse()
+			horse.setAttributes()
+		
 	def setName(self):
 		self.name = raw_input('>')
 		
