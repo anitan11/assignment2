@@ -1,7 +1,7 @@
 # from sys import 
 from program import * #bad idea to import everything?
 #import horse			- virker ikke
-#from stable import *	- virker ikke
+#from program import owner	- virker ikke
 
 import web
 
@@ -18,9 +18,12 @@ class Index(object):
 		return render.form()
 	
 	def POST(self):
-		form = web.input(name="Nobody")
+		form = web.input(name="Nobody", horsename=None, type=None, gender=None)
 		name = "%s" % (form.name)
-		return render.form(name=name)
+		horsename = "%s" % (form.horsename)
+		type = "%s" % (form.type)
+		gender = "%s" % (form.gender)
+		return render.index(name=name, horsename=horsename, type=type, gender=gender)
 	
 	def assignVariables(self):
 		owner = Owner()

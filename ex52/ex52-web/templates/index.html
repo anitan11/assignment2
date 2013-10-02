@@ -1,12 +1,8 @@
-$def with (name)
+$def with (name, horsename, type, gender)
 
-<br/>
 <h1>How much energy does my horse need per day?</h1>
-Hi. This program will help you to find out how much energy you horse need during one day.<br/>
-
-Test ok.
 
 $if name:
-    $name
+    $horsename is a $type $gender and he therefore need
 $else:
     No name
