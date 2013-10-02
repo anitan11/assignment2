@@ -1,7 +1,7 @@
 # from sys import 
 from program import * #bad idea to import everything?
-import horse
-from stable import *
+#import horse			- virker ikke
+#from stable import *	- virker ikke
 
 import web
 
@@ -10,18 +10,18 @@ urls = (
 )
 
 program = web.application(urls, globals())
-render = web.template.render('templates/')
+render = web.template.render('templates/', base="layout")
 
 class Index(object):
 	
 	def GET(self):
-		return render.index()
+		return render.form()
 	
 	def POST(self):
 		form = web.input(name="Nobody")
 		name = "%s" % (form.name)
-		return render.index(name = name)
-		
+		return render.form(name=name)
+	
 	def assignVariables(self):
 		owner = Owner()
 		stable = Stable()
