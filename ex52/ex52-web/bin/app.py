@@ -40,7 +40,8 @@ class Index(object):
 			#to do: save entered horse in stable
 			render.form()
 		else:
-			feh=self.horse.findEnergyNeed()
+			feh=0
+			#feh=self.horse.findEnergyNeed()
 			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh)
 	
 	def assignVariables(self):
