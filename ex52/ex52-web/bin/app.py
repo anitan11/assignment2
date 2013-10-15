@@ -44,12 +44,6 @@ class Index(object):
 			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh)
 	
 	def assignVariables(self):
-		
-	
-		owner.setName()
-
-		horse.setAttributes()
-
 		stable.printHorsesInStable()
 
 		# horse.findEnergyNeed()
