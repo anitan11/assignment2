@@ -4,7 +4,7 @@ class Horse(object):
 	hight = "None"
 	type = 	"None"
 	gender = "None"
-	feh=0
+	feh=0.0
 	training = "light"
 
 
@@ -13,7 +13,7 @@ class Horse(object):
 		#	horse.setAttributes()
 		
 	
-	# The following functions is simple set- and get-functions for theg global variables inside this class
+	# The following functions is simple set- and get-functions for the global variables inside this class
 	def setName(self, name):
 		self.name = name
 
@@ -54,7 +54,7 @@ class Horse(object):
 		weight = self.hight * 6.25 - 625.0
 		
 		if self.hight > 148:
-			vfeh = weight // 100
+			vfeh = weight / 100
 			if type == "varmblodshest": #should do something to make sure the user spells it correctly
 				temp = vfeh * 0.05
 				vfeh = vfeh + temp
