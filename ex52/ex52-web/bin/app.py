@@ -1,21 +1,58 @@
+# from sys import
+from modules import Horse
+from modules import Stable
+from modules import Owner
+
+
 import web
 
 urls = (
-  '/', 'Index'
+	'/', 'Index'
 )
 
-app = web.application(urls, globals())
-
-render = web.template.render('templates/')
+program = web.application(urls, globals())
+render = web.template.render('templates/', base="layout")
 
 class Index(object):
-    def GET(self):
-        return render.hello_form()
+	
+	owner = Owner()
+	stable = Stable()
+	horse = Horse()
+	
+	def GET(self):
+		return render.form()
+	
+	def POST(self):
+		form = web.input(horsename=None, type=None, gender=None, morehorses="no", email=None, training=None)
+		self.horse.setName(form.horsename)
+		horsename = self.horse.getName()
+		self.horse.setType(form.type)
+		type = self.horse.getType()
+		self.horse.setGender(form.gender)
+		gender = self.horse.getGender()
+		self.horse.setTraining(form.training)
+		
+		self.owner.setEmail(form.email)
+		email = self.owner.getEmail()
+		
+		morehorses = "%s" % (form.morehorses)
+		if morehorses == "yes":
+			#to do: save entered horse in stable
+			render.form()
+		else:
+			feh=self.horse.findEnergyNeed()
+			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh)
+	
+	def assignVariables(self):
+		
+	
+		owner.setName()
 
-    def POST(self):
-        form = web.input(name="Nobody", greet="Hello")
-        greeting = "%s, %s" % (form.greet, form.name)
-        return render.index(greeting = greeting)
+		horse.setAttributes()
+
+		stable.printHorsesInStable()
+
+		# horse.findEnergyNeed()
 
 if __name__ == "__main__":
-    app.run()
+	program.run()
