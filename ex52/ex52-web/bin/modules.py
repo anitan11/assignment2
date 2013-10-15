@@ -51,7 +51,7 @@ class Horse(object):
 	# If it is not, it check to see if the type is one of the types that needs some additional energy. Then it checks to see if it is a stallion.
 	# Stallions also needs some additional energy on top of the extra energy already given. Then this function calculates the extra energy for the
 	# traing the horse gets. In the end it sums it all up and returns it.
-		weight = self.hight * 6.25 - 625
+		weight = self.hight * 6.25 - 625.0
 		
 		if self.hight > 148:
 			vfeh = weight // 100
