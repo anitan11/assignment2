@@ -66,14 +66,14 @@ class Horse(object):
 				vfeh = vfeh + temp
 		elif self.hight < 148:
 			temp = weight / 100
-			vfeh = temp * 0.8
+			vfeh = temp * 0.8	#(103,5 / 100) * 0,8 = 1,035 * 0,8 = 0,828
 
 		if self.gender == "stallion":
 			temp = vfeh * 0.05
-			vfeh = vfeh + temp
+			vfeh = vfeh + temp	# 0,828 + (0,828 * 0,05) = 0,8694
 			
 		if self.training == "light":
-			pfeh = vfeh * 0.25
+			pfeh = vfeh * 0.25	# 0,8694 * 0,25 = 0,21735
 		elif self.training == "medium":
 			pfeh = vfeh * 0.5
 		elif self.training == "hard":
@@ -81,7 +81,9 @@ class Horse(object):
 		elif self.training == "intense":
 			pfeh = vfeh
 			
-		tfeh = pfeh + vfeh
+		tfeh = pfeh + vfeh	# 0,21735 + 0,8694 = 1,08675
+		
+		tfeh = round(tfeh, 2)
 		
 		return tfeh
 		

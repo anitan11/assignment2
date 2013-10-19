@@ -23,7 +23,7 @@ class Index(object):
 		return render.form()
 	
 	def POST(self):
-		form = web.input(horsename=None, type=None, gender=None, morehorses="no", email=None, training=None)
+		form = web.input(horsename=None, type=None, gender=None, morehorses="no", email=None, training=None, hight=None)
 		self.horse.setName(form.horsename)
 		horsename = self.horse.getName()
 		self.horse.setType(form.type)
@@ -31,6 +31,7 @@ class Index(object):
 		self.horse.setGender(form.gender)
 		gender = self.horse.getGender()
 		self.horse.setTraining(form.training)
+		self.horse.setHight(form.hight)
 		
 		self.owner.setEmail(form.email)
 		email = self.owner.getEmail()
@@ -40,8 +41,8 @@ class Index(object):
 			#to do: save entered horse in stable
 			render.form()
 		else:
-			feh=0
-			#feh=self.horse.findEnergyNeed()
+			#feh=0
+			feh=self.horse.findEnergyNeed()
 			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh)
 	
 	def assignVariables(self):
