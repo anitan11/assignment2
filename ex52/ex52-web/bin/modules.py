@@ -106,7 +106,7 @@ class Stable(object):
 # An object to hold the stalls-array
 	stalls = []
 	
-	def printHorsesInStable(self):
+	def printHorsesInStable(self): #trying another way
 		stable = None
 		#with open('tempfile.txt', 'w') as tempFile
 		#tempFile.write("These are your horses and what they need of feed for each day:")
