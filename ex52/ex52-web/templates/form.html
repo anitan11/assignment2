@@ -1,3 +1,5 @@
+$def with (horsename, type, gender, feh, horses)
+
 Hi. This program will help you to find out how much energy you horse need during one day.<br/>
 Please fill out the form below. <br/>
 <form method=POST>
@@ -29,4 +31,8 @@ Please fill out the form below. <br/>
 	
 	<br/>
 	<input type=submit>
+	<br/>
+	$for horse in horses
+		$horse.name is a $horse.type $horse.gender and therefore needs $horse.feh per day. <br/>
+	
 </form>

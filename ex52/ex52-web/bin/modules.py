@@ -41,10 +41,6 @@ class Horse(object):
 	def setTraining(self, training):
 		self.training = training
 		
-	def putHorseInStable(self, stable):
-	# Puts this horse inside an array in a stable-object
-		stable.stalls.append(self)
-		
 	def getFeh(self):
 		return self.feh
 		
@@ -82,7 +78,7 @@ class Horse(object):
 		elif self.training == "intense":
 			vfeh = vfeh * 2
 
-		vfeh = round(tfeh, 2) # 0,21735 + 0,8694 = 1,08675
+		vfeh = round(vfeh, 2) # 0,21735 + 0,8694 = 1,08675
 		
 		self.feh = vfeh
 		
@@ -96,18 +92,4 @@ class Owner(object):
 		
 	def getEmail(self):
 		return self.email
-		
 
-		
-class Stable(object):
-# An object to hold the stalls-array
-	stalls = []
-	
-	def printHorsesInStable(self): #trying another way
-		stable = None
-		#with open('tempfile.txt', 'w') as tempFile
-		#tempFile.write("These are your horses and what they need of feed for each day:")
-		for horse in self.stalls:
-			stable = "%s needs $s feH a day" % (horse.name, horse.feh)
-			#tempFile.write(stable)
-		return stable
