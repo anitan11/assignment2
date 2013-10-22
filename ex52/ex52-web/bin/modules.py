@@ -4,14 +4,9 @@ class Horse(object):
 	hight = "None"
 	type = 	"None"
 	gender = "None"
-	feh=0.0
+	feh = 0.0
 	training = "light"
-
-
-		#if answer == "yes":
-		#	horse = Horse()
-		#	horse.setAttributes()
-		
+	weight = None
 	
 	# The following functions is simple set- and get-functions for the global variables inside this class
 	def setName(self, name):
@@ -44,15 +39,17 @@ class Horse(object):
 	def getFeh(self):
 		return self.feh
 		
-	def findEnergyNeed(self):   #needs to be split in to several functions
-	# This function uses the horses hight to find the weight. Then it checks to see if the horse in under the pony-line or not.
+	def setWeight(self, weight):
+		self.weight = float(weight.replace(',', '.'))
+		
+	def findEnergyNeed(self):   #could be split in to several functions
+	# This function uses the horses wight and hight to find the daily energy need. It checks to see if the horse in under the pony-line or not.
 	# If it is not, it check to see if the type is one of the types that needs some additional energy. Then it checks to see if it is a stallion.
 	# Stallions also needs some additional energy on top of the extra energy already given. Then this function calculates the extra energy for the
 	# traing the horse gets. In the end it sums it all up and returns it.
-		weight = self.hight * 6.25 - 625.0
 		
 		if self.hight >= 148:
-			vfeh = weight / 100
+			vfeh = self.weight / 100.0
 			if type == "varmblodshest": #should do something to make sure the user spells it correctly
 				vfeh = vfeh * 1.05
 
@@ -63,14 +60,14 @@ class Horse(object):
 				vfeh = vfeh * 1.10
 
 		elif self.hight < 148:
-			temp = weight / 100
-			vfeh = temp * 0.8	#(103,5 / 100) * 0,8 = 1,035 * 0,8 = 0,828
+			temp = self.weight / 100.0
+			vfeh = temp * 0.8
 
 		if self.gender == "stallion":
-			vfeh = vfeh * 1.05 # 0,828 + (0,828 * 0,05) = 0,8694
+			vfeh = vfeh * 1.05
 			
 		if self.training == "light":
-			vfeh = vfeh * 1.25	# 0,8694 * 0,25 = 0,21735
+			vfeh = vfeh * 1.25
 		elif self.training == "medium":
 			vfeh = vfeh * 1.5
 		elif self.training == "hard":
@@ -78,7 +75,7 @@ class Horse(object):
 		elif self.training == "intense":
 			vfeh = vfeh * 2
 
-		vfeh = round(vfeh, 2) # 0,21735 + 0,8694 = 1,08675
+		vfeh = round(vfeh, 2)
 		
 		self.feh = vfeh
 		

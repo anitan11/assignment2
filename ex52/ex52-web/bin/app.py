@@ -1,6 +1,5 @@
 # from sys import
 from modules import Horse
-from modules import Stable
 from modules import Owner
 
 
@@ -14,7 +13,6 @@ program = web.application(urls, globals())
 render = web.template.render('templates/', base="layout")
 
 owner = Owner()
-stable = Stable()
 stalls = []
 
 class Form(object):
@@ -25,8 +23,8 @@ class Form(object):
 	
 	def POST(self):
 		horse = Horse()
-		form = web.input(horsename=None, type=None, gender=None, morehorses=None, email=owner.email, training=None, hight=None)
-		self.setHorseVariables(form.horsename, form.type, form.gender, form.training, form.hight, horse)
+		form = web.input(horsename=None, type=None, gender=None, morehorses=None, email=owner.email, training=None, hight=None, weight=None)
+		self.setHorseVariables(form.horsename, form.type, form.gender, form.training, form.hight, horse, form.weight)
 		
 		horsename = horse.getName()
 		type = horse.getType()
@@ -44,12 +42,13 @@ class Form(object):
 		else:
 			return render.index(horsename=horsename, type=type, gender=gender, email = email, feh=feh, horses=horses)
 	
-	def setHorseVariables(self, horsename, type, gender, training, hight, horse):
+	def setHorseVariables(self, horsename, type, gender, training, hight, horse, weight):
 		horse.setName(horsename)
 		horse.setType(type)
 		horse.setGender(gender)
 		horse.setTraining(training)
 		horse.setHight(hight)
+		horse.setWeight(weight)
 		horse.findEnergyNeed()
 		stalls.append(horse) #saves entered horse in stable
 
