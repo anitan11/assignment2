@@ -41,10 +41,12 @@ class Horse(object):
 	def setTraining(self, training):
 		self.training = training
 		
-	def putHorseInStable(self):
+	def putHorseInStable(self, stable):
 	# Puts this horse inside an array in a stable-object
-		self.stable = Stable()
-		self.stable.stalls.append(self)
+		stable.stalls.append(self)
+		
+	def getFeh(self):
+		return self.feh
 		
 	def findEnergyNeed(self):   #needs to be split in to several functions
 	# This function uses the horses hight to find the weight. Then it checks to see if the horse in under the pony-line or not.
@@ -53,41 +55,36 @@ class Horse(object):
 	# traing the horse gets. In the end it sums it all up and returns it.
 		weight = self.hight * 6.25 - 625.0
 		
-		if self.hight > 148:
+		if self.hight >= 148:
 			vfeh = weight / 100
 			if type == "varmblodshest": #should do something to make sure the user spells it correctly
-				temp = vfeh * 0.05
-				vfeh = vfeh + temp
+				vfeh = vfeh * 1.05
+
 			elif type == "kaldblodstraver": #should do something to make sure the user spells it correctly
-				temp = vfeh * 0.05
-				vfeh = vfeh + temp
+				vfeh = vfeh * 1.05
+
 			elif type == "fullblodshest": #should do something to make sure the user spells it correctly
-				temp = vfeh * 0.10
-				vfeh = vfeh + temp
+				vfeh = vfeh * 1.10
+
 		elif self.hight < 148:
 			temp = weight / 100
 			vfeh = temp * 0.8	#(103,5 / 100) * 0,8 = 1,035 * 0,8 = 0,828
 
 		if self.gender == "stallion":
-			temp = vfeh * 0.05
-			vfeh = vfeh + temp	# 0,828 + (0,828 * 0,05) = 0,8694
+			vfeh = vfeh * 1.05 # 0,828 + (0,828 * 0,05) = 0,8694
 			
 		if self.training == "light":
-			pfeh = vfeh * 0.25	# 0,8694 * 0,25 = 0,21735
+			vfeh = vfeh * 1.25	# 0,8694 * 0,25 = 0,21735
 		elif self.training == "medium":
-			pfeh = vfeh * 0.5
+			vfeh = vfeh * 1.5
 		elif self.training == "hard":
-			pfeh = vfeh * 0.75
+			vfeh = vfeh * 1.75
 		elif self.training == "intense":
-			pfeh = vfeh
-			
-		tfeh = pfeh + vfeh	# 0,21735 + 0,8694 = 1,08675
-		
-		tfeh = round(tfeh, 2)
-		
-		return tfeh
-		
+			vfeh = vfeh * 2
 
+		vfeh = round(tfeh, 2) # 0,21735 + 0,8694 = 1,08675
+		
+		self.feh = vfeh
 		
 class Owner(object):
 # A small object to hold the email-variable

@@ -23,32 +23,38 @@ class Index(object):
 		return render.form()
 	
 	def POST(self):
-		form = web.input(horsename=None, type=None, gender=None, morehorses="no", email=None, training=None, hight=None)
-		self.horse.setName(form.horsename)
-		horsename = self.horse.getName()
-		self.horse.setType(form.type)
-		type = self.horse.getType()
-		self.horse.setGender(form.gender)
-		gender = self.horse.getGender()
-		self.horse.setTraining(form.training)
-		self.horse.setHight(form.hight)
+		form = web.input(horsename=None, type=None, gender=None, morehorses=None, email=None, training=None, hight=None)
+		self.setHorseVariables(form.horsename, form.type, form.gender, form.training, form.hight)
 		
+		horsename = self.horse.getName()
+		type = self.horse.getType()
+		gender = self.horse.getGender()
+		feh=self.horse.getFeh()
+				
 		self.owner.setEmail(form.email)
 		email = self.owner.getEmail()
 		
 		morehorses = "%s" % (form.morehorses)
 		if morehorses == "yes":
-			#to do: save entered horse in stable
-			render.form()
+			return render.form()
 		else:
-			#feh=0
-			feh=self.horse.findEnergyNeed()
-			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh)
-	
-	def assignVariables(self):
-		stable.printHorsesInStable()
+			horses=self.stable.stalls
+			return render.index(morehorses=morehorses, horsename=horsename, type=type, gender=gender, email = email, feh=feh, horses=horses)
 
-		# horse.findEnergyNeed()
+	
+	def blankForm(self):
+		return render.form()
+	
+	def setHorseVariables(self, horsename, type, gender, training, hight):
+		self.horse.setName(horsename)
+		self.horse.setType(type)
+		self.horse.setGender(gender)
+		self.horse.setTraining(training)
+		self.horse.setHight(hight)
+		self.horse.findEnergyNeed()
+		self.horse.putHorseInStable(self.stable) #saves entered horse in stable
+		
+		self.horse = Horse()
 
 if __name__ == "__main__":
 	program.run()
