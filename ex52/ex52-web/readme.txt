@@ -1,7 +1,8 @@
 Author: Anita Ruud Nilsen
 Contact: anitarn5@gmail.com
 
-This file is placed in this directory because I thought it was a good logical position.
+I asked where to put this file, but got no answer. So I put this file in this directory because
+I thought it was a good logical position.
 
 An university assignment - Assignment 2
 
