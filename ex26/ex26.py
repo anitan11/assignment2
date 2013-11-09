@@ -7,16 +7,16 @@ def break_words(stuff):
 
 def sort_words(words):
     """Sorts the words."""
-    return sorted(words)
+    return sorted(words) 
 
-def print_first_word(words):
+def print_first_word(words): #manglet ‘:’
     """Prints the first word after popping it off."""
     word = words.pop(0) #tatt bort en 'o'
     print word
 
-def print_last_word(words):
+def print_last_word(words): 
     """Prints the last word after popping it off."""
-    word = words.pop(-1)
+    word = words.pop(-1) #manglet ‘)’
     print word
 
 def sort_sentence(sentence):
@@ -59,7 +59,7 @@ print "This should be five: %s" % five
 
 def secret_formula(started):
     jelly_beans = started * 500
-    jars = jelly_beans / 1000
+    jars = jelly_beans / 1000 #endret ‘\’ til ‘/’
     crates = jars / 100
     return jelly_beans, jars, crates
 
@@ -73,21 +73,21 @@ print "We'd have %d jeans, %d jars, and %d crates." % (beans, jars, crates)
 start_point = start_point / 10
 
 print "We can also do that this way:"
-print "We'd have %d beans, %d jars, and %d crabapples." % secret_formula(start_point) #satte inn _ istedenfor -
+print "We'd have %d beans, %d jars, and %d crabapples." % secret_formula(start_point) #manglet en ‘)’, satte inn _ istedenfor - og korrigerte variabelnavnet
 
 
 sentence = "All good things come to those who weight."
 
-words = break_words(sentence) #tatt bort ex25 da funksjonen ligger i dette dokumentet
-sorted_words = sort_words(words) #tatt bort ex25 da funksjonen ligger i dette dokumentet
+words = break_words(sentence) #tatt bort ex25. da funksjonen ligger i dette dokumentet
+sorted_words = sort_words(words) #tatt bort ex25. da funksjonen ligger i dette dokumentet
 
 print_first_word(words)
 print_last_word(words)
-print_first_word(sorted_words)
+print_first_word(sorted_words) #fjernet ‘.’
 print_last_word(sorted_words)
 sorted_words = sort_sentence(sentence) #tatt bort ex25
-print sorted_words
+print sorted_words #manglet ‘t’
 
-print_first_and_last(sentence)
+print_first_and_last(sentence) #manglet en ‘f’ i funksjonsnavnet
 
-print_first_and_last_sorted(sentence)
+print_first_and_last_sorted(sentence) #korrigerte variabel-navn, tok bort mellomrommene før funskjonsnavnet, korrigerte '_a_' til '_and_'
