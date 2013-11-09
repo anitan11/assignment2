@@ -1,5 +1,3 @@
-from stable import *
-
 class Horse(object):
 
 	name = "None"
