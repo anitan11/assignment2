@@ -1,10 +1,6 @@
 class Owner(object):
-
-	# def __init__(self)
-
-	name = "None"
-
-	def setName(self):
-		self.name = raw_input('>')
+	def setEmail(self, email):
+		self.email = email
 		
-		
+	def getEmail(self):
+		return self.email

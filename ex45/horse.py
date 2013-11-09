@@ -4,84 +4,79 @@ class Horse(object):
 
 	name = "None"
 	hight = "None"
-	weight = "None"
 	type = 	"None"
 	gender = "None"
-	vfeh = "None"
-	pfeh = "None"
-	tfeh = "None"
+	feh = 0.0
+	training = "light"
+	weight = None
+	
+	# The following functions is simple set- and get-functions for the global variables inside this class
+	def setName(self, name):
+		self.name = name
 
-	def setAttributes(self):
-		print "What is your horses name?"
-		self.setName()
+	def getName(self):
+		return self.name
 		
-		print "What is your horses hight - in cm?"
-		self.setHight()
+	def setHight(self, hight): 
+		self.hight = float(hight.replace(',', '.'))
 		
-		print "What is the type of your horse?"
-		self.setType()
+	def getHight(self):
+		return self.hight
 		
-		print "What is the gender of your horse?"
-		print "stallion, gelding or mare"
-		self.setGender()
+	def setType(self, type):
+		self.type = type
+
+	def getType(self):
+		return self.type
+	
+	def setGender(self, gender):
+		self.gender = gender
 		
-		self.putHorseInStable()
+	def getGender(self):
+		return self.gender
 		
-		print "Do you have any more horses?"
-		print "yes or no"
-		answer = raw_input(">")
-		if answer == "yes":
-			horse = Horse()
-			horse.setAttributes()
+	def setTraining(self, training):
+		self.training = training
 		
-	def setName(self):
-		self.name = raw_input('>')
+	def getFeh(self):
+		return self.feh
 		
-	def setHight(self):
-		self.hight = raw_input('>')
+	def setWeight(self, weight):
+		self.weight = float(weight.replace(',', '.'))
 		
-	def setType(self):
-		self.type = raw_input('>')
+	def findEnergyNeed(self):   #could be split in to several functions
+	# This function uses the horses wight and hight to find the daily energy need. It checks to see if the horse in under the pony-line or not.
+	# If it is not, it check to see if the type is one of the types that needs some additional energy. Then it checks to see if it is a stallion.
+	# Stallions also needs some additional energy on top of the extra energy already given. Then this function calculates the extra energy for the
+	# traing the horse gets. In the end it sums it all up and returns it.
 		
-	def setGender(self):
-		self.gender = raw_input('>')
-		
-	def putHorseInStable(self):
-		self.stable = Stable()
-		self.stable.stalls.append(self)
-		
-	def findEnergyNeed(self):
-		self.weight = self.hight * 6,25 - 625
-		
-		if self.hight > 148:
-			self.vfeh = self.weight / 100
+		if self.hight >= 148:
+			vfeh = self.weight / 100.0
+			if type == "varmblodshest": #should do something to make sure the user spells it correctly
+				vfeh = vfeh * 1.05
+
+			elif type == "kaldblodstraver": #should do something to make sure the user spells it correctly
+				vfeh = vfeh * 1.05
+
+			elif type == "fullblodshest": #should do something to make sure the user spells it correctly
+				vfeh = vfeh * 1.10
+
 		elif self.hight < 148:
-			self.temp = self.weight / 100
-			self.vfeh = temp * 0,8
+			temp = self.weight / 100.0
+			vfeh = temp * 0.8
+
+		if self.gender == "stallion":
+			vfeh = vfeh * 1.05
 			
-		if type == "varmblodshest":
-			temp = vfeh * 0,05
-			vfeh = vfeh + temp
-		elif type == "kaldblodstraver":
-			temp = vfeh * 0,05
-			vfeh = vfeh + temp
-		elif type == "fullblodshest":
-			temp = vfeh * 0,10
-			vfeh = vfeh + temp
+		if self.training == "light":
+			vfeh = vfeh * 1.25
+		elif self.training == "medium":
+			vfeh = vfeh * 1.5
+		elif self.training == "hard":
+			vfeh = vfeh * 1.75
+		elif self.training == "intense":
+			vfeh = vfeh * 2
+
+		vfeh = round(vfeh, 2)
 		
-		if gender == "stallion":
-			temp = vfeh * 0,10
-			vfeh = vfeh + temp
-			
-		if trening == "light":
-			pfeh = vfeh * 0,25
-		elif trening == "medium":
-			pfeh = vfeh * 0,5
-		elif trening == "hard":
-			pfeh = vfeh * 0,75
-		elif trening == "intense":
-			pfeh = vfeh
-			
-		tfeh = pfeh + vfeh
-		
-		print "%s needs %f feH pr day" % (name, tfeh)
+		self.feh = vfeh
