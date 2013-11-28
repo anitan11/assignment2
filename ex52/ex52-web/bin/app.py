@@ -1,7 +1,7 @@
-# from sys import
+import sys
+sys.path.insert(0, '\program')
 from modules import Horse
 from modules import Owner
-
 
 import web
 
